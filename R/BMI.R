@@ -15,8 +15,6 @@ BMI_level <- function(data,BMI,gender,age){
   library(tidyverse)
   data %>%
     mutate(BMI=round(BMI,1)) %>%
-    mutate(BMI_level=ifelse(is.na(gender) | is.na(age) | is.na(BMI) | !(age %in% 6:120) | !(gender %in% c(1,2)),
-                            "数据有误",NA)) %>%
     mutate(BMI_level=case_when(
       gender==1 & age>=6 & age<6.5 & BMI>=16.4 & BMI<17.7 ~ '超重',
       gender==1 & age>=6.5 & age<7 & BMI>=16.7 & BMI<18.1 ~ '超重',
@@ -213,5 +211,7 @@ BMI_level <- function(data,BMI,gender,age){
       gender==2 & age>=17 & age<=17.5 & BMI<16.7 ~ '中重度消瘦',
       gender==2 & age>=17.5 & BMI<16.8 ~ '中重度消瘦',
       TRUE ~ "正常"
-    ))
+    )) %>%
+    mutate(BMI_level=ifelse(is.na(gender) | is.na(age) | is.na(BMI) | !(age %in% 6:120) | !(gender %in% c(1,2)),
+                          "数据有误",NA))
 }
