@@ -1,0 +1,11 @@
+Package: BMI
+Type: Package
+Title: BMI related var calculate
+Version: 0.1.0
+Author: Anyway
+Maintainer: Anyway<waw1978@163.com>
+Description: BMI related var calculate
+License: Anyway
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.1
