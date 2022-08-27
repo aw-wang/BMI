@@ -213,5 +213,5 @@ BMI_level <- function(data,BMI,gender,age){
       TRUE ~ "正常"
     )) %>%
     mutate(BMI_level=ifelse(is.na(gender) | is.na(age) | is.na(BMI) | !(age %in% 6:120) | !(gender %in% c(1,2)),
-                          "数据有误",NA))
+                          "数据有误",BMI_level))
 }
