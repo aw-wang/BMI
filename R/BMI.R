@@ -212,6 +212,5 @@ BMI_level <- function(data,BMI,gender,age){
       gender==2 & age>=17.5 & BMI<16.8 ~ '中重度消瘦',
       TRUE ~ "正常"
     )) %>%
-    mutate(BMI_level=ifelse(is.na(gender) | is.na(age) | is.na(BMI) | !(age %in% 6:120) | !(gender %in% c(1,2)),
-                          "数据有误",BMI_level))
+    mutate(BMI_level=ifelse(is.na(gender) | is.na(age) | is.na(BMI) | !between(age,6,120) | !(gender %in% c(1,2)),"数据有误",BMI_level))
 }
